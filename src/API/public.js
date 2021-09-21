@@ -20,8 +20,16 @@ module.exports.get_orders = () => {
   return axios.get(BASE_URL+'/orders/get', headers)
 }
 
+module.exports.get_products = () => {
+  return axios.get(BASE_URL+'/products/get', headers)
+}
+
 // --------------------------------------------- POST
 module.exports.add_customer = (body) => {
   return axios.post(BASE_URL+'/add_customer', body, headers)
+}
+
+module.exports.add_orders = (body) => {
+  return axios.post(BASE_URL+'/orders/add', body, headers)
 }
 

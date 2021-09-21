@@ -5,25 +5,39 @@ export default class Add extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            address: [],
-            formValues: {}
+            products: [],
+            formValues: {
+                customer_id: 10,
+                orders: []
+            },
+
         }
     }
 
     componentDidMount() {
-        this.getAddress()
+        this.getProducts()
     }
 
-    getAddress() {
-        API.get_address()
+    getProducts() {
+        API.get_products()
             .then((res: any) => {
                 this.setState({
-                    address: res.data.data
+                    products: res.data.data
                 })
-                console.log(res.data.data)
+                var array: any = []
+                res.data.data.map((res: any, index: number) => {
+                    array[index] = {
+                        product_id: 0,
+                        number: 0
+                    }
+                })
+                this.setState((prevState: any) => {
+                    prevState.formValues.orders = array
+                })
+                console.log(array)
             })
-            .catch((e:any)=> {
-                console.log(e.response.data)
+            .catch((e: any) => {
+                // console.log(e.response.data)
             })
     }
 
@@ -36,71 +50,88 @@ export default class Add extends React.Component<any, any> {
     }
 
     render() {
-        const {address} = this.state
+        const {products} = this.state
         return (
             <section>
                 <div className="row" dir="rtl">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                         <div className="mb-10">
-                            <label className="form-label">نام و نام خانوادگی مشتری</label>
+                            <label className="form-label">فیلترینگ</label>
                             <input
                                 type="text"
-                                onChange={(e) => {
-                                    this.state.formValues.name = e.target.value
-                                }}
-                                className="form-control form-control-solid"
-                                placeholder="اینجا وارد کنید"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="mb-10">
-                            <label className="form-label">شماره تماس</label>
-                            <input
-                                type="text"
-                                onChange={(e) => {
-                                    this.state.formValues.phone = e.target.value
-                                }}
-                                className="form-control form-control-solid"
-                                placeholder="اینجا وارد کنید"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="mb-10">
-                            <label className="form-label">شهر</label>
-                            <select className="form-select form-select-solid"
-                                    onChange={(e) => {
-                                        this.state.formValues.state = e.target.value
-                                    }}
-                                    aria-label="Select example">
-                                <option>انتخاب کنید</option>
-                                {address.map((res: any, index: number) => (
-                                    <option key={index} value={res.address}>{res.address}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="mb-10">
-                            <label className="form-label">آدرس</label>
-                            <input
-                                type="text"
-                                onChange={(e) => {
-                                    this.state.formValues.address = e.target.value
-                                }}
                                 className="form-control form-control-solid"
                                 placeholder="اینجا وارد کنید"
                             />
                         </div>
                     </div>
                 </div>
+                <div className="row" dir="rtl">
+                    {products.map((res: any, index: number) => (
+                        <div className="col-md-3">
+                            <div className="mb-10">
+                                <label className="form-label">{res.name}</label>
+                                <input
+                                    type="text"
+                                    onChange={(e) => {
+                                        this.setState({
+                                            ['item' + res.id]: {
+                                                product_id: res.id,
+                                                number: parseInt(e.target.value)
+                                            }
+                                        })
+                                        // this.setState((prevState: any) => {
+                                        //     prevState.formValues.orders[index].product_id = res.id
+                                        //     prevState.formValues.orders[index].number = parseInt(e.target.value)
+                                        // })
+                                    }}
+                                    className="form-control form-control-solid"
+                                    placeholder="اینجا وارد کنید"
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
                 <button
                     onClick={() => {
-                        this.addCustomer()
+                        // var values: any = {}
+                        // values.customer_id = 10
+                        var orders: any = []
+                        // this.state.formValues.orders.map((res: any, index: number) => {
+                        //     if (res.product_id == 0 || res.number == 0)
+                        //     {
+                        //         console.log("im emty")
+                        //         delete this.state.formValues.orders[index]
+                        //     }
+                        // })
+                        // // console.log(this.state.formValues.orders)
+                        // this.state.formValues.orders.map((res: any, index: number) => {
+                        //     console.log(res)
+                        //     orders.push(res)
+                        // })
+                        // console.log("--------------------------->>>>>>>>>>>>>>")
+                        // console.log(values)
+                        // console.log(orders)
+                        this.state.products.map((res: any, index: number) => {
+                            if (this.state['item' + res.id] == undefined)
+                                return
+                            
+                            if (Number.isNaN(this.state['item' + res.id].number) || this.state['item' + res.id].product_id == 0)
+                                return
+                            orders.push(this.state['item' + res.id])
+                            // if (this.state['item' + res.id]) {
+                            //     console.log(this.state['item'+res.id])
+                            //     orders.push(this.state['item' + res.id])
+                            // }
+                        })
+                        console.log(orders)
+                        // console.log(this.state)
+                        // API.add_orders(this.state.formValues)
+                        //     .then((res: any) => {console.log(res.data)})
+                        // this.getProducts()
                     }}
                     className="btn btn-dark"
-                >ثبت</button>
+                >ثبت
+                </button>
             </section>
         );
     }
