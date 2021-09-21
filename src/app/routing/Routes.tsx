@@ -15,7 +15,11 @@ import {ErrorsPage} from '../modules/errors/ErrorsPage'
 import {RootState} from '../../setup'
 
 const Routes: FC = () => {
-  const isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
+  // const isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
+  const isAuthorized = {name: "hello"}
+  // const isAuthorized = ""
+
+    console.log(isAuthorized)
 
   return (
     <Switch>
