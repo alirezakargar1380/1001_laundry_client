@@ -1,6 +1,4 @@
 import React from "react";
-import Axios from "axios";
-import axios from "axios";
 import * as API from "../../../../API/public";
 
 export default class Add extends React.Component<any, any> {
