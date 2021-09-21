@@ -28,6 +28,12 @@ export function AsideMenuMain() {
         </div>
       </div>
 
+      <AsideMenuItemWithSub to='/factors' title='فاکتور ها' fontIcon='bi-archive' icon='/media/icons/duotone/Code/Compiling.svg'>
+          <AsideMenuItem to='/factors/overview' title='پیش نمایش' hasBullet={true}/>
+          <AsideMenuItem to='/factors/add' title='اضافه کردن' hasBullet={true}/>
+
+      </AsideMenuItemWithSub>
+
       <AsideMenuItemWithSub to='/customers' title='مشتری ها' fontIcon='bi-archive' icon='/media/icons/duotone/Code/Compiling.svg'>
           <AsideMenuItem to='/customers/overview' title='پیش نمایش' hasBullet={true}/>
           <AsideMenuItem to='/customers/add' title='اضافه کردن' hasBullet={true}/>
@@ -62,37 +68,6 @@ export function AsideMenuMain() {
         </AsideMenuItemWithSub>
       </AsideMenuItemWithSub>
 
-      <AsideMenuItemWithSub
-        to='/crafted/accounts'
-        title='Accounts'
-        icon='/media/icons/duotone/General/User.svg'
-        fontIcon='bi-person'
-      >
-        <AsideMenuItem to='/crafted/account/overview' title='Overview' hasBullet={true} />
-        <AsideMenuItem to='/crafted/account/settings' title='Settings' hasBullet={true} />
-      </AsideMenuItemWithSub>
-      <AsideMenuItemWithSub
-        to='/error'
-        title='Errors'
-        fontIcon='bi-sticky'
-        icon='/media/icons/duotone/Code/Error-circle.svg'
-      >
-        <AsideMenuItem to='/error/404' title='Error 404' hasBullet={true} />
-        <AsideMenuItem to='/error/500' title='Error 500' hasBullet={true} />
-      </AsideMenuItemWithSub>
-      <AsideMenuItemWithSub
-        to='/crafted/widgets'
-        title='Widgets'
-        icon='/media/icons/duotone/Layout/Layout-4-blocks.svg'
-        fontIcon='bi-layers'
-      >
-        <AsideMenuItem to='/crafted/widgets/lists' title='Lists' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/statistics' title='Statistics' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/charts' title='Charts' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/mixed' title='Mixed' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/tables' title='Tables' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/feeds' title='Feeds' hasBullet={true} />
-      </AsideMenuItemWithSub>
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Apps</span>
