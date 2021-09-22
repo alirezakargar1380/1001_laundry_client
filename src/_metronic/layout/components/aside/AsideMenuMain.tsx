@@ -37,35 +37,17 @@ export function AsideMenuMain() {
       <AsideMenuItemWithSub to='/customers' title='مشتری ها' fontIcon='bi-archive' icon='/media/icons/duotone/Code/Compiling.svg'>
           <AsideMenuItem to='/customers/overview' title='پیش نمایش' hasBullet={true}/>
           <AsideMenuItem to='/customers/add' title='اضافه کردن' hasBullet={true}/>
-
+      </AsideMenuItemWithSub>
+      {/* ========================================================== PRODUCTS */}
+      <AsideMenuItemWithSub to='/products' title='محصولات' fontIcon='bi-archive' icon='/media/icons/duotone/Code/Compiling.svg'>
+          <AsideMenuItem to='/products/overview' title='پیش نمایش' hasBullet={true}/>
+          <AsideMenuItem to='/products/add' title='اضافه کردن' hasBullet={true}/>
       </AsideMenuItemWithSub>
 
-      <AsideMenuItemWithSub
-        to='/crafted/pages'
-        title='Pages'
-        fontIcon='bi-archive'
-        icon='/media/icons/duotone/Code/Compiling.svg'
-      >
-        <AsideMenuItemWithSub to='/crafted/pages/profile' title='Profile' hasBullet={true}>
-          <AsideMenuItem to='/crafted/pages/profile/overview' title='Overview' hasBullet={true} />
-          <AsideMenuItem to='/crafted/pages/profile/projects' title='Projects' hasBullet={true} />
-          <AsideMenuItem to='/crafted/pages/profile/campaigns' title='Campaigns' hasBullet={true} />
-          <AsideMenuItem to='/crafted/pages/profile/documents' title='Documents' hasBullet={true} />
-          <AsideMenuItem
-            to='/crafted/pages/profile/connections'
-            title='Connections'
-            hasBullet={true}
-          />
-        </AsideMenuItemWithSub>
-
-        <AsideMenuItemWithSub to='/crafted/pages/wizards' title='Wizards' hasBullet={true}>
-          <AsideMenuItem
-            to='/crafted/pages/wizards/horizontal'
-            title='Horizontal'
-            hasBullet={true}
-          />
-          <AsideMenuItem to='/crafted/pages/wizards/vertical' title='Vertical' hasBullet={true} />
-        </AsideMenuItemWithSub>
+      {/* ========================================================== ADDRESS */}
+      <AsideMenuItemWithSub to='/address' title='آدرس' fontIcon='bi-archive' icon='/media/icons/duotone/Code/Compiling.svg'>
+          <AsideMenuItem to='/address/overview' title='پیش نمایش' hasBullet={true}/>
+          <AsideMenuItem to='/address/add' title='اضافه کردن' hasBullet={true}/>
       </AsideMenuItemWithSub>
 
       <div className='menu-item'>
@@ -83,6 +65,7 @@ export function AsideMenuMain() {
         <AsideMenuItem to='/apps/chat/group-chat' title='Group Chart' hasBullet={true} />
         <AsideMenuItem to='/apps/chat/drawer-chat' title='Drawer Chart' hasBullet={true} />
       </AsideMenuItemWithSub>
+
       <div className='menu-item'>
         <div className='menu-content'>
           <div className='separator mx-1 my-4'></div>

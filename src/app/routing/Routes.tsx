@@ -13,13 +13,15 @@ import {PrivateRoutes} from './PrivateRoutes'
 import {Logout, AuthPage} from '../modules/auth'
 import {ErrorsPage} from '../modules/errors/ErrorsPage'
 import {RootState} from '../../setup'
+import * as API from "../../API/public"
 
 const Routes: FC = () => {
-  // const isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
-  const isAuthorized = {name: "hello"}
-  // const isAuthorized = ""
+  let isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
+  // const isAuthorized = {name: "hello"}
+  isAuthorized = sessionStorage.getItem("user-data")
+    if (!isAuthorized) isAuthorized = ""
 
-    console.log(isAuthorized)
+  console.log(isAuthorized)
 
   return (
     <Switch>
