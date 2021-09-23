@@ -148,11 +148,11 @@ const ListsWidget4: React.FC<Props> = ({className, items = 6}) => {
             {/* begin::Symbol */}
             <div className='symbol symbol-50px me-5'>
               <span className='symbol-label'>
-                <img
-                  src={toAbsoluteUrl('/media/svg/brand-logos/kickstarter.svg')}
-                  className='h-50 align-self-center'
-                  alt=''
-                />
+                {/*<img*/}
+                {/*  src={toAbsoluteUrl('/media/svg/brand-logos/kickstarter.svg')}*/}
+                {/*  className='h-50 align-self-center'*/}
+                {/*  alt=''*/}
+                {/*/>*/}
               </span>
             </div>
             {/* end::Symbol */}

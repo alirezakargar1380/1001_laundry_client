@@ -110,11 +110,11 @@ const MixedWidget8: React.FC<Props> = ({className, chartColor, chartHeight}) => 
               {/* begin::Symbol */}
               <div className='symbol symbol-50px me-3'>
                 <div className='symbol-label bg-light'>
-                  <img
-                    src={toAbsoluteUrl('/media/svg/brand-logos/figma-1.svg')}
-                    alt=''
-                    className='h-50'
-                  />
+                  {/*<img*/}
+                  {/*  src={toAbsoluteUrl('/media/svg/brand-logos/figma-1.svg')}*/}
+                  {/*  alt=''*/}
+                  {/*  className='h-50'*/}
+                  {/*/>*/}
                 </div>
               </div>
               {/* end::Symbol */}
