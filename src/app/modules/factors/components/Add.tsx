@@ -6,6 +6,11 @@ export default class Add extends React.Component<any, any> {
         super(props);
         this.state = {
             products: [],
+            searchValues: {
+                id: "",
+                name: "",
+                phone: ""
+            },
             formValues: {
                 customer_id: 10,
                 orders: []
@@ -56,18 +61,48 @@ export default class Add extends React.Component<any, any> {
                 <div className="row" dir="rtl">
                     <div className="col-md-12">
                         <div className="mb-10">
-                            <label className="form-label">فیلترینگ</label>
+                            <label className="form-label">فیلترینگ مشتریان</label>
+                        </div>
+                    </div>
+                    <div className="col-md-3 px-3">
+                        <div className="mb-10">
                             <input
                                 type="text"
                                 className="form-control form-control-solid"
-                                placeholder="اینجا وارد کنید"
+                                placeholder="شماره فاکتور"
                             />
                         </div>
                     </div>
+                    <div className="col-md-3 px-3">
+                        <div className="mb-10">
+                            <input
+                                type="text"
+                                className="form-control form-control-solid"
+                                placeholder="نام"
+                            />
+                        </div>
+                    </div>
+                    <div className="col-md-3 px-3">
+                        <div className="mb-10">
+                            <input
+                                type="text"
+                                className="form-control form-control-solid"
+                                placeholder="شماره تماس"
+                            />
+                        </div>
+                    </div>
+                    <div className="col-md-3 px-3">
+                        <div className="mb-10">
+                            <a href="#" className="btn btn-primary">اعمال فیلتر</a>
+                        </div>
+                    </div>
                 </div>
+                <section className="mb-10" dir="rtl">
+                    <label className="form-label">انتخاب مشتری</label>
+                </section>
                 <div className="row" dir="rtl">
                     {products.map((res: any, index: number) => (
-                        <div className="col-md-3">
+                        <div className="col-md-3 px-3">
                             <div className="mb-10">
                                 <label className="form-label">{res.name}</label>
                                 <input
@@ -79,10 +114,6 @@ export default class Add extends React.Component<any, any> {
                                                 number: parseInt(e.target.value)
                                             }
                                         })
-                                        // this.setState((prevState: any) => {
-                                        //     prevState.formValues.orders[index].product_id = res.id
-                                        //     prevState.formValues.orders[index].number = parseInt(e.target.value)
-                                        // })
                                     }}
                                     className="form-control form-control-solid"
                                     placeholder="اینجا وارد کنید"
