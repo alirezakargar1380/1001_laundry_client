@@ -4,14 +4,14 @@
 
 
 // Custom functions & mixins
-@import "./core/base/functions";
-@import "./core/base/mixins";
-@import "./core/components/mixins";
-@import "./core/vendors/plugins/mixins";
+@import "./core/base/_functions";
+@import "./core/base/_mixins";
+@import "./core/components/_mixins";
+@import "./core/vendors/plugins/_mixins";
 
 // Custom variables
 @import "components/variables.custom";
-@import "./core/components/variables";
+@import "./core/components/_variables";
 
 // Bootstrap initializaton
 @import "~bootstrap/scss/functions";

@@ -1,17 +1,12 @@
-//
-// Theme style(coming soon)
-//
-
-// Mode
+// eslint-disable-line
 $mode: dark;
-
-// Initialize
-@import "init";
-
-// Components
+// eslint-disable-line
+@import "_init";
+// eslint-disable-line
 @import "./core/components/components";
+// eslint-disable-line
 @import "components/components";
-
-// Layout
+// eslint-disable-line
 @import "layout/layout";
+// eslint-disable-line
 @import "./core/layout/docs/layout";

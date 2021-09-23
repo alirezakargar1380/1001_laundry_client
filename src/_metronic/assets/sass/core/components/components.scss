@@ -8,7 +8,9 @@
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
 @import "~bootstrap/scss/containers";
+// ++++++++++++++++++++++++++ START BUG
 @import "~bootstrap/scss/grid";
+// ++++++++++++++++++++++++++ START END
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
@@ -37,11 +39,11 @@
 @import "~bootstrap/scss/helpers";
 
 // Bootstrap utilities
-@import "utilities";
+@import "_utilities";
 @import "~bootstrap/scss/utilities/api";
 
 // Custom components
-@import "root";
+@import "_root";
 @import "helpers";
 @import "animation";
 @import "nav";
@@ -63,7 +65,7 @@
 @import "accordion";
 @import "feedback";
 @import "image-input";
-@import "symbol";
+//@import "symbol";
 @import "pulse";
 @import "page-loader";
 @import "scrolltop";
@@ -79,7 +81,7 @@
 @import "rating";
 @import "stepper";
 @import "toggle";
-@import "shape";
+//@import "shape";
 @import "ribbon";
 @import "blockui";
 @import "notice";
