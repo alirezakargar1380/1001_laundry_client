@@ -35,7 +35,7 @@ export default class Add extends React.Component<any, any> {
                 <div className="row justify-content-around" dir="rtl">
                     <div className="col-md-12">
                         <div className="row">
-                            <div className="col-md-3">
+                            <div className="col-md-3 px-3">
                                 <div className="mb-10">
                                     <input
                                         type="text"
@@ -49,7 +49,7 @@ export default class Add extends React.Component<any, any> {
                                     />
                                 </div>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 px-3">
                                 <div className="mb-10">
                                     <input
                                         type="text"
@@ -63,7 +63,7 @@ export default class Add extends React.Component<any, any> {
                                     />
                                 </div>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 px-3">
                                 <div className="mb-10">
                                     <button
                                         onClick={() => {
