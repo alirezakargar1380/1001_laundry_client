@@ -14,7 +14,8 @@ export default class Overview extends React.Component<any, any> {
     }
 
     get_customers() {
-        API.get_customers()
+        const json = { phone: "", name: "", id: "" }
+        API.get_customers(json)
             .then((res: any) => {
                 this.setState({
                     customers: res.data.data
@@ -29,7 +30,7 @@ export default class Overview extends React.Component<any, any> {
                 <header>
                     <a href="add" className="btn btn-primary">اضافه کردن مشتری</a>
                 </header>
-                <table className="table table-striped gy-7 gs-7">
+                <table className="table table-striped gy-7 gs-7" dir={"rtl"}>
                     <thead>
                     <tr className="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
                         <th>کد اشتراک</th>
