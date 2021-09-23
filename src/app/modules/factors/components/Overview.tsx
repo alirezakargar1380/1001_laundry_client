@@ -26,10 +26,10 @@ export default class Overview extends React.Component<any, any> {
         const {customers} = this.state
         return(
             <main>
-                <header>
+                <header className={"mb-10"}>
                     <a href="add" className="btn btn-primary">اضافه کردن فاکتور</a>
                 </header>
-                <table className="table table-striped gy-7 gs-7">
+                <table className="table table-striped gy-7 gs-7" dir="rtl">
                     <thead>
                     <tr className="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
                         <th>شماره فاکتور</th>

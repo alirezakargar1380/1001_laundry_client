@@ -49,7 +49,7 @@ export default class Add extends React.Component<any, any> {
                     position="bottom-center"
                 />
                 <div className="row" dir="rtl">
-                    <div className="col-md-6">
+                    <div className="col-md-6 px-3">
                         <div className="mb-10">
                             <label className="form-label">نام و نام خانوادگی مشتری</label>
                             <input
@@ -62,7 +62,7 @@ export default class Add extends React.Component<any, any> {
                             />
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 px-3">
                         <div className="mb-10">
                             <label className="form-label">شماره تماس</label>
                             <input
@@ -75,7 +75,7 @@ export default class Add extends React.Component<any, any> {
                             />
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 px-3">
                         <div className="mb-10">
                             <label className="form-label">شهر</label>
                             <select className="form-select form-select-solid"
@@ -90,7 +90,7 @@ export default class Add extends React.Component<any, any> {
                             </select>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 px-3">
                         <div className="mb-10">
                             <label className="form-label">آدرس</label>
                             <input

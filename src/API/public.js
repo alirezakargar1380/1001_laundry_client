@@ -13,7 +13,6 @@ module.exports.get_address = () => {
 }
 
 module.exports.get_customers = ({phone, name, id}) => {
-  console.log(phone)
   return axios.get(BASE_URL+`/customers/get?name=${name}&phone=${phone}&id=${id}`, headers)
 }
 

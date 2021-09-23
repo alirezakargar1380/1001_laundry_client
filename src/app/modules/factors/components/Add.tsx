@@ -1,18 +1,21 @@
 import React from "react";
 import * as API from "../../../../API/public";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class Add extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
             products: [],
+            customers: [],
             searchValues: {
                 id: "",
                 name: "",
                 phone: ""
             },
             formValues: {
-                customer_id: 10,
+                customer_id: 0,
                 orders: []
             },
 
@@ -21,6 +24,7 @@ export default class Add extends React.Component<any, any> {
 
     componentDidMount() {
         this.getProducts()
+        this.getCustomer()
     }
 
     getProducts() {
@@ -46,18 +50,24 @@ export default class Add extends React.Component<any, any> {
             })
     }
 
-    addCustomer() {
-        API.add_customer(this.state.formValues)
+    getCustomer() {
+        const {searchValues} = this.state
+        API.get_customers(searchValues)
             .then((res: any) => {
-                console.log(res.data)
+                this.setState({
+                    customers: res.data.data
+                })
             })
 
     }
 
     render() {
-        const {products} = this.state
+        const {products, customers} = this.state
         return (
             <section>
+                <ToastContainer
+                    position="bottom-center"
+                />
                 <div className="row" dir="rtl">
                     <div className="col-md-12">
                         <div className="mb-10">
@@ -70,6 +80,11 @@ export default class Add extends React.Component<any, any> {
                                 type="text"
                                 className="form-control form-control-solid"
                                 placeholder="شماره فاکتور"
+                                onChange={(e) => {
+                                    this.setState((prevState: any) => {
+                                        prevState.searchValues.id = e.target.value
+                                    })
+                                }}
                             />
                         </div>
                     </div>
@@ -79,6 +94,11 @@ export default class Add extends React.Component<any, any> {
                                 type="text"
                                 className="form-control form-control-solid"
                                 placeholder="نام"
+                                onChange={(e) => {
+                                    this.setState((prevState: any) => {
+                                        prevState.searchValues.name = e.target.value
+                                    })
+                                }}
                             />
                         </div>
                     </div>
@@ -88,18 +108,42 @@ export default class Add extends React.Component<any, any> {
                                 type="text"
                                 className="form-control form-control-solid"
                                 placeholder="شماره تماس"
+                                onChange={(e) => {
+                                    this.setState((prevState: any) => {
+                                        prevState.searchValues.phone = e.target.value
+                                    })
+                                }}
                             />
                         </div>
                     </div>
                     <div className="col-md-3 px-3">
                         <div className="mb-10">
-                            <a href="#" className="btn btn-primary">اعمال فیلتر</a>
+                            <button
+                                onClick={() => { this.getCustomer() }}
+                                className="btn btn-primary">اعمال فیلتر</button>
                         </div>
                     </div>
                 </div>
-                <section className="mb-10" dir="rtl">
-                    <label className="form-label">انتخاب مشتری</label>
-                </section>
+
+                <div className="row">
+                    <section className="col-md-3 mb-10 ml-auto" dir="rtl">
+                        <label className="form-label">انتخاب مشتری</label>
+                        <select className="form-select form-select-solid"
+                                onChange={(e) => {
+                                    this.setState((prevState: any) => {
+                                        prevState.formValues.customer_id = e.target.value
+                                    })
+                                }}
+                                aria-label="Select example">
+                            <option>Open this select menu</option>
+                            {customers.map((res: any) => (
+                                <option value={res.id}>{res.name+" "+res.phone}</option>
+                            ))}
+
+                        </select>
+                    </section>
+                </div>
+
                 <div className="row" dir="rtl">
                     {products.map((res: any, index: number) => (
                         <div className="col-md-3 px-3">
@@ -125,23 +169,9 @@ export default class Add extends React.Component<any, any> {
                 <button
                     onClick={() => {
                         var values: any = {}
-                        values.customer_id = 10
+                        values.customer_id = parseInt(this.state.formValues.customer_id)
                         var orders: any = []
-                        // this.state.formValues.orders.map((res: any, index: number) => {
-                        //     if (res.product_id == 0 || res.number == 0)
-                        //     {
-                        //         console.log("im emty")
-                        //         delete this.state.formValues.orders[index]
-                        //     }
-                        // })
-                        // // console.log(this.state.formValues.orders)
-                        // this.state.formValues.orders.map((res: any, index: number) => {
-                        //     console.log(res)
-                        //     orders.push(res)
-                        // })
-                        // console.log("--------------------------->>>>>>>>>>>>>>")
-                        // console.log(values)
-                        // console.log(orders)
+
                         this.state.products.map((res: any, index: number) => {
                             if (this.state['item' + res.id] == undefined)
                                 return
@@ -149,16 +179,20 @@ export default class Add extends React.Component<any, any> {
                             if (Number.isNaN(this.state['item' + res.id].number) || this.state['item' + res.id].product_id == 0)
                                 return
                             orders.push(this.state['item' + res.id])
-                            // if (this.state['item' + res.id]) {
-                            //     console.log(this.state['item'+res.id])
-                            //     orders.push(this.state['item' + res.id])
-                            // }
                         })
-                        console.log(orders)
+
+                        values.orders = orders
                         // console.log(this.state)
                         // API.add_orders(this.state.formValues)
                         //     .then((res: any) => {console.log(res.data)})
-                        // this.getProducts()
+                        console.log(values)
+                        API.add_orders(values)
+                            .then(() => {
+                                toast("فاکتور شما با موفقیت صادر شد", {
+                                    type: "info",
+                                    theme: "dark"
+                                })
+                            })
                     }}
                     className="btn btn-dark"
                 >ثبت
