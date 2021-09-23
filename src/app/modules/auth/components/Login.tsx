@@ -21,20 +21,20 @@ const loginSchema = Yup.object().shape({
       .required('Password is required'),
 })
 
-const initialValues = {
-  email: 'alireza',
-  password: '009881951',
-}
+// const initialValues = {
+//   email: 'alireza',
+//   password: '009881951',
+// }
 
 // const initialValues = {
 //   email: 'admin@demo.com',
 //   password: 'demo',
 // }
 
-// const initialValues = {
-//   email: '',
-//   password: '',
-// }
+const initialValues = {
+  email: '',
+  password: '',
+}
 
 /*
   Formik+YUP+Typescript:
