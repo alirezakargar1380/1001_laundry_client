@@ -33,6 +33,7 @@ export const reducer = persistReducer(
   (state: IAuthState = initialAuthState, action: ActionWithPayload<IAuthState>) => {
     switch (action.type) {
       case actionTypes.Login: {
+        console.log("im login acton")
         const accessToken = action.payload?.accessToken
         return {accessToken, user: undefined}
       }
@@ -82,6 +83,7 @@ export const actions = {
 
 export function* saga() {
   yield takeLatest(actionTypes.Login, function* loginSaga() {
+    console.log("takeLatest loginSaga")
     yield put(actions.requestUser())
   })
 
@@ -90,7 +92,67 @@ export function* saga() {
   })
 
   yield takeLatest(actionTypes.UserRequested, function* userRequested() {
-    const {data: user} = yield getUserByToken()
+    console.log("takeLatest userRequested")
+    // const {data: user} = yield getUserByToken()
+    const user: any = {
+      id: 1,
+      username: "admin",
+      email: "admin@demo.com",
+      auth: {
+        accessToken: "access-token-8f3ae836da744329a6f93bf20594b5cc",
+        refreshToken: "access-token-f8c137a2c98743f48b643e71161d90aa"
+      },
+      roles: [
+        1
+      ],
+      "pic": "/media/avatars/150-2.jpg",
+      "fullname": "Sean S",
+      "firstname": "Sean",
+      "lastname": "Stark",
+      "occupation": "CEO",
+      "companyName": "Keenthemes",
+      "phone": "456669067890",
+      "language": "en",
+      "timeZone": "International Date Line West",
+      "website": "https://keenthemes.com",
+      "emailSettings": {
+        "emailNotification": true,
+        "sendCopyToPersonalEmail": false,
+        "activityRelatesEmail": {
+          "youHaveNewNotifications": false,
+          "youAreSentADirectMessage": false,
+          "someoneAddsYouAsAsAConnection": true,
+          "uponNewOrder": false,
+          "newMembershipApproval": false,
+          "memberRegistration": true
+        },
+        "updatesFromKeenthemes": {
+          "newsAboutKeenthemesProductsAndFeatureUpdates": false,
+          "tipsOnGettingMoreOutOfKeen": false,
+          "thingsYouMissedSindeYouLastLoggedIntoKeen": true,
+          "newsAboutStartOnPartnerProductsAndOtherServices": true,
+          "tipsOnStartBusinessProducts": true
+        }
+      },
+      "communication": {
+        "email": true,
+        "sms": true,
+        "phone": false
+      },
+      "address": {
+        "addressLine": "L-12-20 Vertex, Cybersquare",
+        "city": "San Francisco",
+        "state": "California",
+        "postCode": "45000"
+      },
+      "socialNetworks": {
+        "linkedIn": "https://linkedin.com/admin",
+        "facebook": "https://facebook.com/admin",
+        "twitter": "https://twitter.com/admin",
+        "instagram": "https://instagram.com/admin"
+      }
+    }
+    // console.log(user)
     yield put(actions.fulfillUser(user))
   })
 }

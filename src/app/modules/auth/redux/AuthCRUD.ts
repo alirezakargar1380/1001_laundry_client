@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {AuthModel} from '../models/AuthModel'
 import {UserModel} from '../models/UserModel'
+import * as API from "../../../../API/public";
 
 const API_URL = process.env.REACT_APP_API_URL || 'api'
 
@@ -11,7 +12,8 @@ export const REQUEST_PASSWORD_URL = `${API_URL}/auth/forgot-password`
 
 // Server should return AuthModel
 export function login(email: string, password: string) {
-  return axios.post(LOGIN_URL, {email, password})
+  // return axios.post(LOGIN_URL, {email, password})
+  return API.login({email, password})
 }
 
 // Server should return AuthModel
@@ -33,4 +35,5 @@ export function getUserByToken() {
   // Authorization head should be fulfilled in interceptor.
   // Check common redux folder => setupAxios
   return axios.get<UserModel>(GET_USER_BY_ACCESSTOKEN_URL)
+  // return { data: "user" }
 }
