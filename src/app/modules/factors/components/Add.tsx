@@ -93,8 +93,8 @@ export default class Add extends React.Component<any, any> {
                 </div>
                 <button
                     onClick={() => {
-                        // var values: any = {}
-                        // values.customer_id = 10
+                        var values: any = {}
+                        values.customer_id = 10
                         var orders: any = []
                         // this.state.formValues.orders.map((res: any, index: number) => {
                         //     if (res.product_id == 0 || res.number == 0)
